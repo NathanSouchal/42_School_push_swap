@@ -6,7 +6,7 @@
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:09:20 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/01/05 09:17:41 by nsouchal         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:22:36 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,43 +27,48 @@ int	check_double(char **array, char *nb, int index)
 int	check_error(char **array)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	while (array[i] != 0)
 	{
 		if (ft_strlen(array[i]) == 1 && array[i][0] == '0')
 		{
 			if (check_double(array, array[i], i) == 0)
 				return (0);
-			i++;
 		}
 		else
 		{
 			if (check_double(array, array[i], i) == 0 || ft_atoi(array[i]) == 0)
 				return (0);
-			i++;
 		}
+		i++;
 	}
 	return (1);
 }
 
 int	final_check(int ac, char **av)
 {
+	char	**array;
+	int		i;
+
+	i = -1;
 	if (ac == 2)
 	{
-		if (check_error(ft_split(av[1], ' ')) == 0)
+		array = ft_split(av[1], ' ');
+		if (!array)
+			return (0);
+		if (check_error(array) == 0)
 		{
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			return (0);
 		}
+		free_double_array(array);
 	}
 	else
 	{
 		if (check_error(av + 1) == 0)
 		{
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			return (0);
 		}
 	}
@@ -77,31 +82,43 @@ t_Dlist	*get_params(int ac, char **av)
 	t_Dlist	*new_elem;
 
 	lst = ft_dlstnew(ft_atoi(av[1]));
+	if (!lst)
+		return (NULL);
 	i = 2;
 	while (i < ac)
 	{
 		new_elem = ft_dlstnew(ft_atoi(av[i]));
+		if (!new_elem)
+		{
+			free_lst(&lst);
+			return (NULL);
+		}
 		ft_dlstadd_back(&lst, new_elem);
 		i++;
 	}
 	return (lst);
 }
 
-t_Dlist	*get_params_str(char *str)
+t_Dlist	*get_params_str(char **param_array)
 {
-	char	**param_array;
 	int		i;
 	t_Dlist	*lst;
 	t_Dlist	*new_elem;
 
-	param_array = ft_split(str, ' ');
-	lst = ft_dlstnew(ft_atoi(param_array[0]));
-	i = 1;
+	lst = NULL;
+	i = 0;
 	while (param_array[i] != 0)
 	{
 		new_elem = ft_dlstnew(ft_atoi(param_array[i]));
+		if (!new_elem)
+		{
+			free_double_array(param_array);
+			free_lst(&lst);
+			return (NULL);
+		}
 		ft_dlstadd_back(&lst, new_elem);
 		i++;
 	}
+	free_double_array(param_array);
 	return (lst);
 }

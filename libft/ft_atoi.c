@@ -6,7 +6,7 @@
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:22:14 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/01/05 09:15:12 by nsouchal         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:27:24 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ int	ft_atoi(char *nptr)
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		result = (result * 10) + (nptr[i] - 48);
-		if (result < 0 && sign > 0)
-			return (-1);
-		else if (result < 0 && sign < 0)
-			return (0);
 		i++;
 	}
-	if (result * sign < INT_MIN || result * sign > INT_MAX)
+	if (nptr[i] != '\0')
+		return (0);
+	if ((result * sign) < INT_MIN || (result * sign) > INT_MAX)
 		return (0);
 	return (sign * (int)result);
 }

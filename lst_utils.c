@@ -6,21 +6,34 @@
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:09:14 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/01/05 11:10:41 by nsouchal         ###   ########.fr       */
+/*   Updated: 2024/01/18 11:03:33 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_list(t_Dlist **lst)
-{
-	t_Dlist	*lst_copy;
+// void	print_list(t_Dlist **lst)
+// {
+// 	t_Dlist	*lst_copy;
 
-	lst_copy = *lst;
-	while (lst_copy != NULL)
+// 	lst_copy = *lst;
+// 	while (lst_copy != NULL)
+// 	{
+// 		ft_printf("%d\n", lst_copy->value);
+// 		lst_copy = lst_copy->next;
+// 	}
+// }
+
+void	free_lst(t_Dlist **lst)
+{
+	if (*lst)
 	{
-		ft_printf("%d\n", lst_copy->value);
-		lst_copy = lst_copy->next;
+		while ((*lst)->next)
+		{
+			*lst = (*lst)->next;
+			free((*lst)->back);
+		}
+		free(*lst);
 	}
 }
 
@@ -29,6 +42,8 @@ int	lst_len(t_Dlist **lst)
 	t_Dlist	*lst_copy;
 	int		length;
 
+	if (!*lst)
+		return (0);
 	lst_copy = *lst;
 	length = 0;
 	while (lst_copy != NULL)
@@ -45,7 +60,7 @@ t_Dlist	*ft_dlstnew(int content)
 
 	new_elem = malloc(sizeof(t_Dlist));
 	if (!new_elem)
-		return (0);
+		return (NULL);
 	new_elem->value = content;
 	new_elem->next = NULL;
 	new_elem->back = NULL;
@@ -81,14 +96,3 @@ void	ft_dlstadd_back(t_Dlist **lst, t_Dlist *new)
 		new->back = last_elem;
 	}
 }
-
-// void	ft_dlstadd_front(t_Dlist **lst, t_Dlist *new)
-// {
-// 	if (*lst)
-// 	{
-// 		new->next = *lst;
-// 		*lst = new;
-// 	}
-// 	else
-// 		*lst = new;
-// }

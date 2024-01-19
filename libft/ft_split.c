@@ -6,12 +6,13 @@
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 08:17:26 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/01/04 13:23:51 by nsouchal         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:07:33 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 static void	free_array(char **array, size_t index)
 {

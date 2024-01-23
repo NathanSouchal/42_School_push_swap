@@ -6,7 +6,7 @@
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:06:44 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/01/19 14:13:37 by nsouchal         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:34:58 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ void	sort_3(t_Dlist **stack)
 void	final_sort(t_Dlist **stack_a, t_Dlist **stack_b)
 {
 	if (lst_sorted(stack_a) == 1)
+	{
+		free_lst(stack_a);
 		return ;
+	}
 	else if (lst_len(stack_a) == 2)
 		sort_2_a(stack_a);
 	else if (lst_len(stack_a) == 3)

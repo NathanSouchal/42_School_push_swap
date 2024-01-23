@@ -6,7 +6,7 @@
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:30:01 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/01/18 09:55:52 by nsouchal         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:08:02 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	find_first_sup(int nb, t_Dlist **stack)
 	int		first_sup;
 	t_Dlist	*stack_copy;
 
+	first_sup = 0;
 	stack_copy = *stack;
 	while (stack_copy)
 	{

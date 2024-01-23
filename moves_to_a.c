@@ -6,7 +6,7 @@
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:10:23 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/01/18 11:11:03 by nsouchal         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:13:22 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	moves_a_newmax(t_Dlist **stack_a, t_Dlist **stack_b, int index_max)
 			reverse_rotate_a(stack_a);
 	}
 	push_a(stack_a, stack_b);
-	rotate_a(stack_a);
 }
 
 void	moves_a_notnewmax(t_Dlist **stack_a, t_Dlist **stack_b, int fst_sup_i)

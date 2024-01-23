@@ -6,23 +6,11 @@
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:09:14 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/01/18 11:03:33 by nsouchal         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:17:07 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	print_list(t_Dlist **lst)
-// {
-// 	t_Dlist	*lst_copy;
-
-// 	lst_copy = *lst;
-// 	while (lst_copy != NULL)
-// 	{
-// 		ft_printf("%d\n", lst_copy->value);
-// 		lst_copy = lst_copy->next;
-// 	}
-// }
 
 void	free_lst(t_Dlist **lst)
 {

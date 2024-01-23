@@ -6,7 +6,7 @@
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:54:25 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/01/19 12:45:10 by nsouchal         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:17:11 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct s_Dlist
 t_Dlist	*ft_dlstnew(int content);
 void	ft_dlstadd_back(t_Dlist **lst, t_Dlist *new);
 t_Dlist	*ft_dlstlast(t_Dlist *lst);
-void	print_list(t_Dlist **lst);
 int		lst_len(t_Dlist **lst);
 void	print_cost(t_Dlist **lst);
 void	free_lst(t_Dlist **lst);

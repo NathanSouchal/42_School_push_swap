@@ -6,7 +6,7 @@
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 09:56:22 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/01/15 13:46:45 by nsouchal         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:15:26 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	find_index(int nb, t_Dlist **stack)
 
 	stack_copy = *stack;
 	i = 0;
+	index = -1;
 	while (stack_copy)
 	{
 		if (stack_copy->value == nb)
@@ -95,7 +96,7 @@ int	find_lst_max(t_Dlist **stack)
 	t_Dlist	*stack_copy;
 
 	stack_copy = *stack;
-	max = stack_copy->value;
+	max = INT_MIN;
 	while (stack_copy)
 	{
 		if (stack_copy->value > max)
